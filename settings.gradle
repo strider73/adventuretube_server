@@ -3,3 +3,8 @@
  */
 
 rootProject.name = 'adventuretube'
+include 'model'
+include 'service'
+include 'web'
+include 'repo'
+
