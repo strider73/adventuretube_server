@@ -3,6 +3,13 @@ services:
     build: web
     ports:
       - 8080:8080
+    depends_on:
+      - postgres
+      - mongodb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/adventuretube
+    networks:
+      - adventuretube-network
   mongodb:
     image: mongo
     container_name: mongodb
@@ -13,6 +20,8 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
+    networks:
+      - adventuretube-network
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -23,6 +32,8 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_SERVER=mongodb
+    networks:
+      - adventuretube-network
   postgres:
     image: postgres
     ports:
@@ -33,8 +44,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=adventuretube
+    networks:
+      - adventuretube-network
 volumes:
   data: { }
 networks:
-  default:
-    name: mongodb_network
+ adventuretube-network:
