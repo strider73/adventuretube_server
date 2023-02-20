@@ -23,6 +23,10 @@ public class Place {
         this.name = name;
     }
 
+
+    public Place(){
+        super();
+    }
     private List<String> contentCategory;
     private long youtubeTime;
     private String placeID;

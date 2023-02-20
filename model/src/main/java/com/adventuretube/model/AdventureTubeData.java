@@ -2,6 +2,7 @@ package com.adventuretube.model;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,6 +24,9 @@ public class AdventureTubeData {
     private String coreDataID;
     @Indexed(unique = true)
     private String youtubeContentID;
+    public  AdventureTubeData(){
+        super();
+    }
 
 
     public AdventureTubeData(List<String> userContentCategory,

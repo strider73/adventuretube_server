@@ -1,11 +1,8 @@
-version: "3.8"
 services:
-#  web:
-#    build: web
-#    depends_on:
-#      - postgres
-
-  #MongoDB & Express comes from youtube MongoDB Tutorial for Beginners Full Course
+  web:
+    build: web
+    ports:
+      - 8080:8080
   mongodb:
     image: mongo
     container_name: mongodb

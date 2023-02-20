@@ -22,6 +22,10 @@ public class Chapter {
         this.categories = categories;
     }
 
+    public Chapter(){
+        super();
+    }
+
     private String youtubeID;
     private long youtubeTime;
     private List<String> categories;
