@@ -1,11 +1,14 @@
 services:
-  web:
-    build: web
+  postgres:
+    image: postgres
     ports:
-      - 8080:8080
-    depends_on:
-      - postgres
-      - mongodb
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=adventuretube
   mongodb:
     image: mongo
     container_name: mongodb
@@ -26,16 +29,13 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_SERVER=mongodb
-  postgres:
-    image: postgres
+  web:
+    build: web
     ports:
-      - 5432:5432
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=mysecretpassword
-      - POSTGRES_DB=adventuretube
+      - 8080:8080
+    depends_on:
+      - postgres
+      - mongodb
 volumes:
   data: { }
 networks:
