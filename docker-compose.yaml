@@ -7,7 +7,6 @@ services:
     depends_on:
       - postgres
       - mongodb
-      - mongo-express
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/adventuretube
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -15,6 +14,7 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
   postgres:
     image: postgres
+    container_name: postgres
     ports:
       - 5432:5432
     volumes:
@@ -39,6 +39,8 @@ services:
     restart: always
     ports:
       - 8081:8081
+    links:
+      - mongodb
     environment:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
