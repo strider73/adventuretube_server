@@ -6,7 +6,7 @@ pipeline {
  stages {
          stage('Checkout') {
              steps {
-                 // Checkout the repository from GitHub
+                 // Checkout the repository from GitHub by Chris
                  git url: 'https://github.com/strider73/adventuretube_server.git'
              }
          }
