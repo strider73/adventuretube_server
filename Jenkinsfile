@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    label 'ssh-docker-agent'
+    label 'jenkins-ssh-agent'
   }
 
  stages {
