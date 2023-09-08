@@ -22,6 +22,7 @@ pipeline {
          stage('Restart Web Application') {
              steps {
                  // Restart the web application container
+                 //is it works >
                  sh 'docker compose restart web'
              }
          }
