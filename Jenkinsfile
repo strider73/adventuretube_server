@@ -22,7 +22,8 @@ pipeline {
          stage('Restart Web Application') {
              steps {
                  // Restart the web application container
-                 sh 'docker compose restart web'
+                 sh 'docker compose down'
+                 sh 'docker compose up'
              }
          }
      }
