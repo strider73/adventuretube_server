@@ -37,7 +37,7 @@ public class AdventureTubeDataService {
     }
 
     public void getAdventuretubeDatasForArea() {
-        MongoClient mongoClient = MongoClients.create("mongodb://rootuser:rootpass@localhost/adventuretube?authSource=admin");
+        MongoClient mongoClient = MongoClients.create("mongodb://rootuser:rootpass@192.168.1.100/adventuretube?authSource=admin");
         MongoDatabase db = mongoClient.getDatabase("adventuretube");
         MongoCollection<Document> collection = db.getCollection("adventureTubeData");
 
