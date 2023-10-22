@@ -21,7 +21,8 @@ pipeline {
 
          stage('Restart Web Application') {
              steps {
-                 // Restart the web application container
+                 // Restart the web application container!!!!
+                 //Test jenkins  agasin !!!!!!
                  sh 'docker compose restart web'
              }
          }
