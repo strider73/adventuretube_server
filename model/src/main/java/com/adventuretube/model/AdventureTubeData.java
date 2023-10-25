@@ -23,6 +23,8 @@ public class AdventureTubeData {
     private String userContentType;
     private String coreDataID;
     @Indexed(unique = true)
+    //because of this index there is property has been added in application.properties
+    //spring.data.mongodb.auto-index-creation=true
     private String youtubeContentID;
     public  AdventureTubeData(){
         super();

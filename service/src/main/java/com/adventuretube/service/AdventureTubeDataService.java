@@ -7,6 +7,8 @@ import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Position;
+import org.springframework.data.geo.Distance;
+
 import lombok.AllArgsConstructor;
 import org.bson.Document;
 import org.springframework.stereotype.Service;
@@ -36,8 +38,11 @@ public class AdventureTubeDataService {
 
     }
 
+    //connection string to adventuretripvideo.com
+    //mongodb://rootuser:rootpass@adventuretripvideo.com/adventuretube?authSource=admin
     public void getAdventuretubeDatasForArea() {
-        MongoClient mongoClient = MongoClients.create("mongodb://rootuser:rootpass@192.168.1.100/adventuretube?authSource=admin");
+
+        MongoClient mongoClient = MongoClients.create("mongodb://rootuser:rootpass@mongodb/adventuretube?authSource=admin");
         MongoDatabase db = mongoClient.getDatabase("adventuretube");
         MongoCollection<Document> collection = db.getCollection("adventureTubeData");
 
@@ -52,4 +57,6 @@ public class AdventureTubeDataService {
             System.out.println(doc.toJson());
         }
     }
+
+
 }
