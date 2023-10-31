@@ -10,8 +10,8 @@ pipeline {
                  //ssh credential has been set
                  def branchName = params.branchName
 
-                 echo "User selected branch is ${branchName}"
-                 git branch: ${branchName} , url: 'git@github.com:strider73/adventuretube_server.git'
+                 echo "User selected branch is "${branchName}""
+                 git branch: "${branchName}" , url: 'git@github.com:strider73/adventuretube_server.git'
              }
          }
 
