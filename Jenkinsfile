@@ -11,7 +11,7 @@ pipeline {
                  def branchName = params.branchName
 
                  echo "User selected branch is ${branchName}"
-                 git branch:branchName url: 'git@github.com:strider73/adventuretube_server.git'
+                 git branch:branchName , url: 'git@github.com:strider73/adventuretube_server.git'
              }
          }
 
