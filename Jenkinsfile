@@ -9,20 +9,20 @@ pipeline {
 
 
     stages {
-        stage('Prepare and Checkout') {
-            steps {
-                script {
-                    def branchName = params.branchName
-
-                    echo "User selected branch is ${branchName}"
-                }
-            }
-        }
+//         stage('Prepare and Checkout') {
+//             steps {
+//                 script {
+//                     def branchName = params.branchName
+//
+//                     echo "User selected branch is ${branchName}"
+//                 }
+//             }
+//         }
 
         stage('Checkout') {
             steps {
                 script {
-                    def branchName = params.branchName
+                    def branchName = params.branchName.substring('refs/heads/'.length())
                     echo "User selected branch is ${branchName}"
 
                     checkout([
