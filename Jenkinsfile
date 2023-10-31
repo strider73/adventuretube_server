@@ -8,10 +8,8 @@ pipeline {
              steps {
                  //Checkout the repository from GitHub by Chris
                  //ssh credential has been set
-                 def branchName = params.branchName
 
-                 echo "User selected branch is "${branchName}""
-                 git branch: "${branchName}" , url: 'git@github.com:strider73/adventuretube_server.git'
+                 git branch: "${params.branchName}" , url: 'git@github.com:strider73/adventuretube_server.git'
              }
          }
 
