@@ -9,12 +9,6 @@ pipeline {
 //
 
     stages {
-        stage('Prepare and Checkout') {
-            steps {
-
-            }
-        }
-
         stage('Checkout') {
             steps {
                 script {
