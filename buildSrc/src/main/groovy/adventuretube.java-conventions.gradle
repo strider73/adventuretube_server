@@ -10,7 +10,7 @@ repositories {
 }
 dependencies {
     //@JsonProperty
-    implementation     libs.bundles.springstrater
+    implementation     libs.bundles.springbootstrater
     testImplementation libs.junitjupiterapi
     testRuntimeOnly    libs.junitjupiterengine
 }

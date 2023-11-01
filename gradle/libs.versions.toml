@@ -21,7 +21,7 @@ projectlombok = {group = "org.projectlombok" , name = "lombok" , version.ref = "
 
 [bundles]
 
-springstrater = [
+springbootstrater = [
      "springbootstarterweb",
      "springbootstarterdatamongodb",
      "springbootstarterdatajpa"
