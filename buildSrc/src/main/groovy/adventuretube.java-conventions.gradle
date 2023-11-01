@@ -10,11 +10,7 @@ repositories {
 }
 dependencies {
     //@JsonProperty
-    implementation libs.springbootstarterweb
-    implementation libs.springbootstarterdatamongodb
-    implementation libs.springbootstarterdatajpa
-
-
+    implementation     libs.bundles.springstrater
     testImplementation libs.junitjupiterapi
     testRuntimeOnly    libs.junitjupiterengine
 }

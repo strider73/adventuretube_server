@@ -19,7 +19,14 @@ junitjupiterapi = {group = "org.junit.jupiter",name = "junit-jupiter-api" , vers
 junitjupiterengine = {group = "org.junit.jupiter",name = "junit-jupiter-engine" , version.ref = "junit-jupiter-engine"}
 projectlombok = {group = "org.projectlombok" , name = "lombok" , version.ref = "projectlombok"}
 
-[plugins]
+[bundles]
 
+springstrater = [
+     "springbootstarterweb",
+     "springbootstarterdatamongodb",
+     "springbootstarterdatajpa"
+]
+
+[plugins]
 springframeworkboot = { id = "org.springframework.boot", version.ref = "springframework-boot-plugin" }
 
