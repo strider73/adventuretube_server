@@ -2,11 +2,11 @@ pipeline {
     agent {
         label 'jenkins-ssh-agent'
     }
-//
-//     parameters {
-//         string(name: 'branchName', defaultValue: 'master', description: 'Enter the branch name')
-//     }
-//
+
+    parameters {
+        string(name: 'branchName', defaultValue: 'master', description: 'Enter the branch name')
+    }
+
 
     stages {
 
