@@ -3,26 +3,26 @@ pipeline {
         label 'jenkins-ssh-agent'
     }
 
-//     parameters {
-//         string(name: 'branchName', defaultValue: 'master', description: 'Enter the branch name')
-//     }
+    parameters {
+        string(name: 'branchName', defaultValue: 'master', description: 'Enter the branch name')
+    }
 
 
     stages {
-//         stage('Prepare and Checkout') {
-//             steps {
-//                 script {
-//                     def branchName = params.branchName
-//
-//                     echo "User selected branch is ${branchName}"
-//                 }
-//             }
-//         }
+        stage('Prepare and Checkout') {
+            steps {
+                script {
+                    def branchName = params.branchName
+
+                    echo "User selected branch is ${branchName}"
+                }
+            }
+        }
 
         stage('Checkout') {
             steps {
                 script {
-                    def branchName = params.branchName.substring('refs/heads/'.length())
+                    def branchName = params.branchName
                     echo "User selected branch is ${branchName}"
 
                     checkout([

@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.adventuretube'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    //@JsonProperty
+    implementation     libs.bundles.springstrater
+    testImplementation libs.junitjupiterapi
+    testRuntimeOnly    libs.junitjupiterengine
+}
+
+test {
+    useJUnitPlatform()
+}
