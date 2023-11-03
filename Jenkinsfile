@@ -13,7 +13,7 @@ pipeline {
                 echo 'Java version: ' + sh(script: 'java -version', returnStdout: true).trim()
 
                 // Print the Gradle version
-                echo 'Gradle version: ' + sh(script: 'gradle --version', returnStdout: true).trim()
+                echo 'Gradle version: ' + sh(script: './gradlew --version', returnStdout: true).trim()
 
                 // Print the Docker version
                 echo 'Docker version: ' + sh(script: 'docker version --format "{{.Server.Version}}"', returnStdout: true).trim()
