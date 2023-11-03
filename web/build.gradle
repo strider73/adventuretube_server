@@ -11,21 +11,21 @@ plugins {
 
 }
 
-task dockerComposeDown(type: Exec) {
-    commandLine 'docker-compose', 'down'
-}
-
-task deleteDockerImage(type: Exec) {
-    commandLine 'docker', 'rmi', 'adventuretube_server-web:latest'
-}
-
-task dockerComposeDownForced(type: Exec) {
-    commandLine 'docker-compose', 'down', '--remove-orphans'
-}
-
-task dockerComposeUp(type: Exec) {
-    commandLine 'docker-compose', 'up'
-}
+//task dockerComposeDown(type: Exec) {
+//    commandLine 'docker-compose', 'down'
+//}
+//
+//task deleteDockerImage(type: Exec) {
+//    commandLine 'docker', 'rmi', 'adventuretube_server-web:latest'
+//}
+//
+//task dockerComposeDownForced(type: Exec) {
+//    commandLine 'docker-compose', 'down', '--remove-orphans'
+//}
+//
+//task dockerComposeUp(type: Exec) {
+//    commandLine 'docker-compose', 'up'
+//}
 
 mainClassName ='com.adventuretube.AdventuretubeMain'
 jar {
