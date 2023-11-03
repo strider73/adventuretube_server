@@ -19,7 +19,7 @@ pipeline {
                 echo 'Docker version: ' + sh(script: 'docker version --format "{{.Server.Version}}"', returnStdout: true).trim()
 
                 // Print the Docker Compose version
-                echo 'Docker Compose version: ' + sh(script: 'docker-compose version', returnStdout: true).trim()
+                echo 'Docker Compose version: ' + sh(script: 'docker compose version', returnStdout: true).trim()
                }
         }
 
