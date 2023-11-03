@@ -3,9 +3,30 @@ plugins {
     id 'adventuretube.java-conventions'
     id 'application'
     id 'org.springframework.boot' version '2.7.2'
+    id 'com.avast.gradle.docker-compose' version "0.17.5"
+
+//    id 'com.bmuschko.docker-spring-boot-application' version '9.3.4'
+//    id 'com.avast.gradle.docker-compose' version "0.17.5"
 //    id 'io.spring.dependency-management' version '1.1.0'
 
 }
+
+task dockerComposeDown(type: Exec) {
+    commandLine 'docker-compose', 'down'
+}
+
+task deleteDockerImage(type: Exec) {
+    commandLine 'docker', 'rmi', 'adventuretube_server-web:latest'
+}
+
+task dockerComposeDownForced(type: Exec) {
+    commandLine 'docker-compose', 'down', '--remove-orphans'
+}
+
+task dockerComposeUp(type: Exec) {
+    commandLine 'docker-compose', 'up'
+}
+
 mainClassName ='com.adventuretube.AdventuretubeMain'
 jar {
     archiveBaseName = 'adventuretube-web'
@@ -16,6 +37,8 @@ jar {
         )
     }
 }
+
+
 
 dependencies {
     implementation libs.projectlombok
