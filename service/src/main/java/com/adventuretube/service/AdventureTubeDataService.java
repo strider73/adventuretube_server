@@ -59,9 +59,4 @@ public class AdventureTubeDataService {
     }
 
 
-    public void getRestaurants(){
-
-    }
-
-
 }

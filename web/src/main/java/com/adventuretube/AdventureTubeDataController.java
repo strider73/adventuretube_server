@@ -43,4 +43,12 @@ public class AdventureTubeDataController {
         System.out.println("================================updateed!!!!!222222==========");
         return new ResponseEntity<>(body, HttpStatus.ACCEPTED);
     }
+
+    //TestFunction using a Restaurants Collection
+
+
+    @GetMapping("/restaurants")
+    public void getRestaurants(){
+
+    }
 }
