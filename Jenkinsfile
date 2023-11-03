@@ -5,6 +5,25 @@ pipeline {
 
     stages {
 
+
+
+        stage('Build tool versions') {
+              steps {
+                // Print the Java version
+                echo 'Java version: ' + sh(script: 'java -version', returnStdout: true).trim()
+
+                // Print the Gradle version
+                echo 'Gradle version: ' + sh(script: 'gradle --version', returnStdout: true).trim()
+
+                // Print the Docker version
+                echo 'Docker version: ' + sh(script: 'docker version --format "{{.Server.Version}}"', returnStdout: true).trim()
+
+                // Print the Docker Compose version
+                echo 'Docker Compose version: ' + sh(script: 'docker-compose version', returnStdout: true).trim()
+               }
+        }
+
+
         stage('Checkout') {
             steps {
                 script {
