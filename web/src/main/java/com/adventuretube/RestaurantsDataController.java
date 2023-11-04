@@ -1,8 +1,10 @@
 package com.adventuretube;
 
 
+import com.adventuretube.model.Restaurants;
 import com.adventuretube.service.RestaurantsDataService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +30,12 @@ public class RestaurantsDataController {
         int size = 10; // Number of items per page
         Sort sort = Sort.by(Sort.Order.asc("name"));
         Pageable pageable = PageRequest.of(page,size);
-        restaurantsDataService.getRestaurants(pageable);
+        Page<Restaurants> restaurantPage =   restaurantsDataService.getRestaurants(pageable);
+        for (Restaurants restaurant : restaurantPage.getContent()) {
+            System.out.println("==============YehwasnLeeeXXXXX==========");
+            System.out.println(restaurant.getName());
+            System.out.println(restaurant.getLocation());
+            System.out.println(restaurant.getLocation().getCoordinates());
+        }
     }
 }

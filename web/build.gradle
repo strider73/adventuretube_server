@@ -11,22 +11,25 @@ plugins {
 
 }
 
-task dockerComposeDown(type: Exec) {
-    commandLine 'docker-compose', 'down'
+task buildWebService(type: GradleBuild){
+    tasks = ['clean','build']
 }
 
-task deleteDockerImage(type: Exec) {
-    commandLine 'docker', 'rmi', 'adventuretube_server-web:latest'
+task dockerComposeWebStop(type: Exec) {
+    commandLine 'docker-compose', 'stop'  ,'web'
 }
 
-task dockerComposeDownForced(type: Exec) {
-    commandLine 'docker-compose', 'down', '--remove-orphans'
+task dockerComposeWebBuild(type: Exec) {
+    commandLine 'docker-compose', 'build', 'web'
 }
 
-task dockerComposeUp(type: Exec) {
-    commandLine 'docker-compose', 'up'
+task dockerComposeWebUp(type: Exec) {
+    commandLine 'docker-compose', 'up', '-d', 'web'
 }
 
+task updateWebService(type: DefaultTask){
+    dependsOn buildWebService,dockerComposeWebStop,dockerComposeWebBuild,dockerComposeWebUp
+}
 mainClassName ='com.adventuretube.AdventuretubeMain'
 jar {
     archiveBaseName = 'adventuretube-web'
