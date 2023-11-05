@@ -3,8 +3,8 @@ plugins {
     id 'adventuretube.java-conventions'
     id 'application'
     id 'org.springframework.boot' version '2.7.2'
-    id 'com.avast.gradle.docker-compose' version "0.17.5"
-    id 'com.bmuschko.docker-spring-boot-application' version '9.3.4'
+//    id 'com.avast.gradle.docker-compose' version "0.17.5"
+//    id 'com.bmuschko.docker-spring-boot-application' version '9.3.4'
 
 
 }
@@ -14,20 +14,22 @@ task buildWebService(type: GradleBuild){
 }
 
 task dockerComposeWebStop(type: Exec) {
-    commandLine 'docker-compose', 'stop'  ,'web'
+    commandLine 'docker', 'compose', 'stop'  ,'web'
 }
 
 task dockerComposeWebBuild(type: Exec) {
-    commandLine 'docker-compose', 'build', 'web'
+    commandLine 'docker', 'compose', 'build', 'web'
 }
 
 task dockerComposeWebUp(type: Exec) {
-    commandLine 'docker-compose', 'up', '-d', 'web'
+    commandLine 'docker' , 'compose', 'up', '-d', 'web'
 }
 
 task updateWebService(type: DefaultTask){
     dependsOn buildWebService,dockerComposeWebStop,dockerComposeWebBuild,dockerComposeWebUp
 }
+
+
 mainClassName ='com.adventuretube.AdventuretubeMain'
 jar {
     archiveBaseName = 'adventuretube-web'
