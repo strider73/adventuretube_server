@@ -40,7 +40,7 @@ public class AdventureTubeDataController {
         body.put("message", "youtube upload successfully");
         body.put("contentId", adventureTubeData.getCoreDataID());
         body.put("contentTitle", adventureTubeData.getYoutubeTitle());
-        System.out.println("================================updateed!!!!!222222==========");
+        System.out.println("================================updateed!!!!!4444444==========");
         return new ResponseEntity<>(body, HttpStatus.ACCEPTED);
     }
 
