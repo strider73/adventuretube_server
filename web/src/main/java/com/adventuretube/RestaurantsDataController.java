@@ -3,6 +3,8 @@ package com.adventuretube;
 
 import com.adventuretube.model.Restaurants;
 import com.adventuretube.service.RestaurantsDataService;
+import com.mongodb.client.model.geojson.Point;
+import com.mongodb.client.model.geojson.Position;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/restaurants")
@@ -32,10 +36,27 @@ public class RestaurantsDataController {
         Pageable pageable = PageRequest.of(page,size);
         Page<Restaurants> restaurantPage =   restaurantsDataService.getRestaurants(pageable);
         for (Restaurants restaurant : restaurantPage.getContent()) {
-            System.out.println("==============YehwasnLeeeXXXXX==========");
+            System.out.println("==============BellaMun==========");
             System.out.println(restaurant.getName());
             System.out.println(restaurant.getLocation());
             System.out.println(restaurant.getLocation().getCoordinates());
         }
     }
+
+
+
+    @GetMapping("/near")
+    public  void getRestaurntsByNear(){
+        double meterPerMile = 1609.34;
+        Point current = new Point(new Position(-73.93414657, 40.82302903));
+        List<Restaurants> nearbyRestaurants = restaurantsDataService.findRestaurantsNearLocation(current, 5 * meterPerMile);
+
+        for (Restaurants restaurants : nearbyRestaurants) {
+            // Print restaurant information (you can customize the printing as needed)
+            System.out.println("Restaurant Name: " + restaurants.getName());
+            System.out.println("Restaurant Address: " + restaurants.toString());
+            // Add more details as necessary
+        }
+    }
+
 }
