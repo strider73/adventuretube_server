@@ -12,3 +12,12 @@ model/build/*
 service/build/*
 repo/build/*
 web/build/*
+
+
+model/bin/*
+service/bin/*
+repo/bin/*
+web/bin/*
+.vscode/settings.json
+.vscode/launch.json
+.DS_Store
