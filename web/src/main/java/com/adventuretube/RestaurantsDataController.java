@@ -6,6 +6,7 @@ import com.adventuretube.service.RestaurantsDataService;
 import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Position;
 import lombok.AllArgsConstructor;
+import lombok.Synchronized;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,6 +14,7 @@ import org.springframework.data.domain.PageRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -46,10 +48,18 @@ public class RestaurantsDataController {
 
 
     @GetMapping("/near")
-    public  void getRestaurntsByNear(){
+    public  void getRestaurntsByNear(
+            @RequestParam("latitude") double latitude,
+            @RequestParam("longitude") double longitude,
+            @RequestParam("maxDistance")  double maxDistance
+    ){
         double meterPerMile = 1609.34;
-        Point current = new Point(new Position(-73.93414657, 40.82302903));
-        List<Restaurants> nearbyRestaurants = restaurantsDataService.findRestaurantsNearLocation(current, 5 * meterPerMile);
+        System.out.println("longitude : "+longitude);
+        System.out.println("latitude  : "+latitude);
+
+        Point current = new Point(new Position(longitude, latitude));
+//      Point current = new Point(new Position(-73.93414657, 40.82302903));
+        List<Restaurants> nearbyRestaurants = restaurantsDataService.findRestaurantsNearLocation(current, maxDistance * meterPerMile);
 
         for (Restaurants restaurants : nearbyRestaurants) {
             // Print restaurant information (you can customize the printing as needed)
