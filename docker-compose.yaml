@@ -32,7 +32,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - data:/data
+      - mongodb_data:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
@@ -50,6 +50,6 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
 
 volumes:
-  data: { }
+ mongodb_data:
 networks:
  adventuretube-network:
