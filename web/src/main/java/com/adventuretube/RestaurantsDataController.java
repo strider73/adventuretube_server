@@ -3,6 +3,7 @@ package com.adventuretube;
 
 import com.adventuretube.model.Restaurant;
 import com.adventuretube.service.RestaurantsDataService;
+import com.adventuretube.web.AdventureTubeProps;
 import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Position;
 import lombok.AllArgsConstructor;
@@ -22,11 +23,28 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/restaurants")
-@AllArgsConstructor
 public class RestaurantsDataController {
     private final RestaurantsDataService restaurantsDataService;
+    private AdventureTubeProps props;
+    public RestaurantsDataController(RestaurantsDataService restaurantsDataService,
+                                     AdventureTubeProps props){
+        this.restaurantsDataService = restaurantsDataService;
+        this.props = props;
+    }
 
-
+//    @GetMapping
+//    public ResponseEntity<List<Restaurant>>  getRestaurants(){
+//        List<Restaurant> restaurants =  restaurantsDataService.getRestaurants();
+//        System.out.println("count : "+restaurants.size());
+//        for (Restaurant restaurant : restaurants) {
+//            // Print restaurant information (you can customize the printing as needed)
+//            System.out.println("==============All restaurants==========");
+//            System.out.println("Restaurant Name: " + restaurant.getName());
+//            System.out.println("Restaurant Address: " + restaurant.toString());
+//            // Add more details as necessary
+//        }
+//        return new ResponseEntity<>(restaurants, HttpStatus.OK);
+//    }
 
 
 
@@ -36,16 +54,16 @@ public class RestaurantsDataController {
             @RequestParam(defaultValue = "10") int size
     ){
 
-//        int page = 1; // Page number, 0-based index (first page is 0)
-//        int size = 10; // Number of items per page
         Sort sort = Sort.by(Sort.Order.asc("name"));
         Pageable pageable = PageRequest.of(page,size);
         Page<Restaurant> restaurantPage =   restaurantsDataService.getRestaurants(pageable);
+
         for (Restaurant restaurant : restaurantPage.getContent()) {
-            System.out.println("==============BellaMun==========");
-            System.out.println(restaurant.getName());
-            System.out.println(restaurant.getLocation());
-            System.out.println(restaurant.getLocation().getCoordinates());
+            // Print restaurant information (you can customize the printing as needed)
+            System.out.println("==============print page: "+page+" ==========");
+            System.out.println("Restaurant Name: " + restaurant.getName());
+            System.out.println("Restaurant Address: " + restaurant.toString());
+            // Add more details as necessary
         }
         return new ResponseEntity<>(restaurantPage.getContent(), HttpStatus.OK);
     }
@@ -56,19 +74,25 @@ public class RestaurantsDataController {
     public  ResponseEntity<List<Restaurant>> getRestaurntsByNear(
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
-            @RequestParam("maxDistance")  double maxDistance
+            @RequestParam(value = "maxDistance", required = false) Double maxDistance // Use Double instead of double
     ){
-        double meterPerMile = 1609.34;
+        maxDistance = (maxDistance == null ||maxDistance == 0) ? props.getMaxDistance() : maxDistance;
+        double meterPerK = 1000;
+        maxDistance = maxDistance * meterPerK;
+        System.out.println("maxDistance is "+maxDistance);
+
+
         System.out.println("longitude : "+longitude);
         System.out.println("latitude  : "+latitude);
+        System.out.println("pageCount is "+props.getPageSize());
 
-        Point current = new Point(new Position(longitude, latitude));
-//      Point current = new Point(new Position(-73.93414657, 40.82302903));
-        List<Restaurant> nearbyRestaurants = restaurantsDataService.findRestaurantsNearLocation(current, maxDistance * meterPerMile);
+
+        double[] current  = {longitude,latitude};
+        List<Restaurant> nearbyRestaurants = restaurantsDataService.findRestaurantsNearLocation(current, maxDistance);
         for (Restaurant restaurant : nearbyRestaurants) {
             // Print restaurant information (you can customize the printing as needed)
-            System.out.println("Restaurant Name: " + restaurant.getName());
-            System.out.println("Restaurant Address: " + restaurant.toString());
+            System.out.println("Test Restaurant Name: " + restaurant.getName());
+            System.out.println("Test Restaurant Address: " + restaurant.toString());
             // Add more details as necessary
         }
         return new ResponseEntity<>(nearbyRestaurants, HttpStatus.OK);

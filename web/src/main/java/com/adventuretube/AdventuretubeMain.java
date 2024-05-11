@@ -1,10 +1,9 @@
 package com.adventuretube;
 
-import com.adventuretube.model.Chapter;
+;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import static java.util.List.of;
 
 @SpringBootApplication
 public class AdventuretubeMain {

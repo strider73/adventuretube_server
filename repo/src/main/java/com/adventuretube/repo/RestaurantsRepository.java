@@ -12,13 +12,35 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface RestaurantsRepository extends MongoRepository <Restaurant,Long> {
-    Page<Restaurant> findAll(Pageable pageable);
+public interface RestaurantsRepository extends MongoRepository <Restaurant,String> {
 
-    @Query("{'location' : { $near : { $geometry : { type : 'Point', coordinates : ?0 }, $maxDistance : ?1 } } }")
-    List<Restaurant>  findNearByLocation(Point location, double maxDistance );
+    List<Restaurant> findAll();
 
-//    @Query("{'location': { $geoWithin: { $box: [ ?0, ?1 ] } } }")
-//    List<Restaurant> findByLocationWithinBox(double[] lowerLeft, double[] upperRight);
+    //@Query("{'location' : { $near : { $geometry : { type : 'Point', coordinates : [ ?0, ?1 ]}, $maxDistance : ?1 } } }")
+    @Query( "{\n" +
+            "     location:\n" +
+            "       { $near :\n" +
+            "          {\n" +
+            "            $geometry: { type: \"Point\",  coordinates: ?0 },\n" +
+            "            $minDistance: 1000,\n" +
+            "            $maxDistance: ?1\n" +
+            "          }\n" +
+            "       }\n" +
+            " }")
+    List<Restaurant> findNearByLocation(double[] point , double maxDistance);
+
+
+    //@Query("{'location': { $geoWithin: { $box: [ ?0, ?1 ] } } }")
+    @Query( "{\n" +
+            "location:{\n" +
+            "        $geoWithin:{\n" +
+            "            $box:[\n" +
+            "                ?0,\n" +
+            "                ?1\n" +
+            "            ]\n" +
+            "        }\n" +
+            "     }\n" +
+            " }")
+    List<Restaurant> findByLocationWithinBox(double[] lowerLeft, double[] upperRight);
 }
 

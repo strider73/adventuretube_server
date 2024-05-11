@@ -1,0 +1,39 @@
+# Web application port
+server:
+  port: 8888
+  error:
+    include-message: always
+
+# MongoDB settings
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: rootuser
+      password: rootpass
+      database: adventuretube
+      port: 27017
+      host: localhost
+      auto-index-creation: true
+
+# PostgreSQL settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/adventuretube
+    username: postgres
+    password: mysecretpassword
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+          default_schema:
+          format_sql: true
+
+# Custom configuration property for AdventureTubeProps class
+adventuretube:
+          maxDistance: 1
+          pageSize: 20
+

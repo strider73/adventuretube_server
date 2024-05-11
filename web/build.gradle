@@ -42,18 +42,18 @@ jar {
 }
 
 
-
 dependencies {
     implementation libs.projectlombok
-    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     annotationProcessor libs.projectlombok
     runtimeOnly 'org.postgresql:postgresql:42.3.6'
     testImplementation libs.junitjupiterapi
     testRuntimeOnly    libs.junitjupiterengine
-
-
+    implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
     implementation(project(":model"))
     implementation(project(":repo"))
     implementation(project(":service"))
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.7.4"
+
+
 }
 
