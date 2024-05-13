@@ -4,6 +4,8 @@ springframework-boot-plugin = "2.7.2"
 spring-boot-starter-web = "2.7.2"
 spring-boot-starter-data-mongodb = "2.7.2"
 spring-boot-starter-data-jpa = "2.7.2"
+spring-boot-starter-data-rest = "2.7.4"
+
 spring-boot-starter-validation = "2.7.2"
 
 projectlombok = "1.18.24"
@@ -16,7 +18,9 @@ junit-jupiter-engine = "5.8.1"
 springbootstarterweb = { group = "org.springframework.boot",name = "spring-boot-starter-web" , version.ref = "spring-boot-starter-web"}
 springbootstarterdatamongodb = {group = "org.springframework.boot",name = "spring-boot-starter-data-mongodb" , version.ref = "spring-boot-starter-data-mongodb"}
 springbootstarterdatajpa = {group = "org.springframework.boot",name = "spring-boot-starter-data-jpa" , version.ref = "spring-boot-starter-data-jpa"}
+springbootstarterdatarest = {group= "org.springframework.boot" ,name = "spring-boot-starter-data-rest", version.ref = "spring-boot-starter-data-rest"}
 springbootstartervalidation = {group = "org.springframework.boot",name = "spring-boot-starter-validation" , version.ref = "spring-boot-starter-validation"}
+
 
 junitjupiterapi = {group = "org.junit.jupiter",name = "junit-jupiter-api" , version.ref = "junit-jupiter-api"}
 junitjupiterengine = {group = "org.junit.jupiter",name = "junit-jupiter-engine" , version.ref = "junit-jupiter-engine"}
@@ -28,6 +32,7 @@ springbootstrater = [
      "springbootstarterweb",
      "springbootstarterdatamongodb",
      "springbootstarterdatajpa",
+     "springbootstarterdatarest",
      "springbootstartervalidation"
 ]
 

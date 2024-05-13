@@ -36,5 +36,5 @@ spring:
 # Custom configuration property for AdventureTubeProps class
 adventuretube:
           maxDistance: 1
-          pageSize: 20
+          pageSize: 12
 

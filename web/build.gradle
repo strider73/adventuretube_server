@@ -53,7 +53,6 @@ dependencies {
     implementation(project(":repo"))
     implementation(project(":service"))
 
-    implementation("org.springframework.boot:spring-boot-starter-data-rest:2.7.4")
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:2.7.4"
 
 
