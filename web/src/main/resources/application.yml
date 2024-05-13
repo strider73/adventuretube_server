@@ -15,8 +15,9 @@ spring:
       port: 27017
       host: localhost
       auto-index-creation: true
-
-# PostgreSQL settings
+    rest:
+      base-path: /rest-api
+  # PostgreSQL settings
   datasource:
     url: jdbc:postgresql://localhost:5432/adventuretube
     username: postgres

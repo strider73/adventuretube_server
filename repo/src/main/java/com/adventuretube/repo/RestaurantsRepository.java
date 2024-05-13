@@ -14,7 +14,7 @@ import java.util.List;
 
 public interface RestaurantsRepository extends MongoRepository <Restaurant,String> {
 
-    List<Restaurant> findAll();
+//    List<Restaurant> findAll();
 
     //@Query("{'location' : { $near : { $geometry : { type : 'Point', coordinates : [ ?0, ?1 ]}, $maxDistance : ?1 } } }")
     @Query( "{\n" +

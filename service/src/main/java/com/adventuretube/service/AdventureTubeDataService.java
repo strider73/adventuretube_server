@@ -23,7 +23,7 @@ import java.util.Optional;
 public class AdventureTubeDataService {
     private final AdventureTubeDataRepository adventureTubeDataRepository;
     private final MongoTemplate mongoTemplate ;
-    public List<AdventureTubeData> getAllAdventureTubeDatas() {
+    public List<AdventureTubeData> getAllAdventureTubeData() {
         return adventureTubeDataRepository.findAll();
     }
 

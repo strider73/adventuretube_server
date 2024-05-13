@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -19,12 +20,8 @@ public class AdventureTubeDataController {
     private final AdventureTubeDataService adventureTubeDataService;
 
     @GetMapping
-//    public  List<AdventureTubeData> fetchAllAdventureTubeDatas(){
-//       return  adventureTubeDataService.getAdventuretubeDatasForArea();
-//    }
-
-    public void fetchAllAdventureTubeDatas() {
-        adventureTubeDataService.getAdventuretubeDatasForArea();
+    public List<AdventureTubeData> getAdventuretubeDatas(){
+       return  adventureTubeDataService.getAllAdventureTubeData();
     }
 
 //    @GetMapping
