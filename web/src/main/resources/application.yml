@@ -16,7 +16,7 @@ spring:
       host: localhost
       auto-index-creation: true
     rest:
-      base-path: /rest-api
+      base-path: /api/rest
   # PostgreSQL settings
   datasource:
     url: jdbc:postgresql://localhost:5432/adventuretube

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/restaurants")
+@RequestMapping("api/restaurants")
 public class RestaurantsDataController {
     private final RestaurantsDataService restaurantsDataService;
     private AdventureTubeProps props;

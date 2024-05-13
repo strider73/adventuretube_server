@@ -9,7 +9,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path = "api/v1/member")
+@RequestMapping(path = "api/member")
 public class MemberController {
 
     private final MemberService memberService;
