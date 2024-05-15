@@ -16,7 +16,6 @@ public interface RestaurantsRepository extends MongoRepository <Restaurant,Strin
 
 //    List<Restaurant> findAll();
 
-    //@Query("{'location' : { $near : { $geometry : { type : 'Point', coordinates : [ ?0, ?1 ]}, $maxDistance : ?1 } } }")
     @Query( """
             {location:
                   {$near :
@@ -27,7 +26,6 @@ public interface RestaurantsRepository extends MongoRepository <Restaurant,Strin
     List<Restaurant> findNearByLocation(double[] point , double maxDistance);
 
 
-    //@Query("{'location': { $geoWithin: { $box: [ ?0, ?1 ] } } }")
     @Query("""
             {location:
                {$geoWithin:
